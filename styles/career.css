@@ -1248,9 +1248,13 @@ textarea:focus {
     
     .choose-us-div{
         
-        margin-top: 20%;
+        margin-top: 30%;
     }
     
+    .main-container{
+        margin-top: 20%;
+
+    }
             
 }
 
