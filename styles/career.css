@@ -30,7 +30,7 @@ h1 {
 }
 
 
-nav .fa-solid{
+nav .fa-bars{
     display: none;
     color: black;
 
@@ -1451,4 +1451,35 @@ textarea:focus {
         margin-top: 5px;
     }
 
+}
+
+
+
+
+    
+@media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+
+    
+    .chooseUsDiv{
+        
+        margin-top: 20%;
+    }
+        
+            
+}
+
+
+
+
+.country-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    padding-left: 40px; /* Make room for the flag */
 }

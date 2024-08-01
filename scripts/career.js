@@ -56,20 +56,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //telephone country-code starts
 
-document.addEventListener('DOMContentLoaded', function() {
-    var input2 = document.querySelector("#phoneId");
-    window.intlTelInput(input2, {
-        initialCountry: "auto",
-        geoIpLookup: function(callback) {
-            fetch('https://ipinfo.io/json', { headers: { 'Accept': 'application/json' } })
-                .then(response => response.json())
-                .then(data => callback(data.country))
-                .catch(() => callback('us'));
-        },
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
-    });         
+// document.addEventListener('DOMContentLoaded', function() {
+//     var input2 = document.querySelector("#phoneId");
+//     window.intlTelInput(input2, {
+//         initialCountry: "auto",
+//         geoIpLookup: function(callback) {
+//             fetch('https://ipinfo.io/json', { headers: { 'Accept': 'application/json' } })
+//                 .then(response => response.json())
+//                 .then(data => callback(data.country))
+//                 .catch(() => callback('us'));
+//         },
+//         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+//     });         
            
-});
+// });
+
+    // var input = document.querySelector("#phoneId");
+    // var iti = window.intlTelInput(input, {
+    // // any options you want to set
+    // initialCountry: "auto",
+    // geoIpLookup: function(callback) {
+    //     $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+    //     var countryCode = (resp && resp.country) ? resp.country : "us";
+    //     callback(countryCode);
+    //     });
+    // },
+    // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+    // });
 
 //telephone country-code ends
 
@@ -118,67 +131,45 @@ $(document).ready(function() {
     });
 });
 
+
+
 // stay connected for newslettter ends
+
+
 
 
 //send details from CONTACT FORM to email starts 
 
- 
-    // $(document).ready(function() {
-    //     $('#careerForm').submit(function(event) {
-    //         event.preventDefault(); // Prevent the default form submission
-
-    //         var formData = {
-    //             name: $('#name').val(),
-    //             email: $('#emailId').val(),
-    //             phone: $('#phoneId').val(),
-    //             countryPreference: $('#countryName option:selected').text(),
-    //             experienceYear: $('#experienceItem option:selected').text(),
-    //             jobTime: $('#jobType option:selected').text(),
-    //             jobCategory:$('#categoryItem option:selected').text(),
-    //             coverLetter: $('textarea[name="coverLetter"]').val(),
-                
-
-    //         };
-
-    //         var emailSubject = formData.jobCategory + " - " + formData.countryPreference;
-
-    //         var templateParams = {
-    //             name: formData.name,
-    //             email: formData.email,
-    //             phone: formData.phone,
-    //             country: formData.countryPreference,
-    //             experience: formData.experienceYear,
-    //             typeofJob: formData.jobTime,
-    //             categoryofJob: formData.jobCategory,
-    //             subject: formData.jobCategory + " - " + formData.countryPreference,
-    //             coverDesc: formData.coverLetter,
-
-    //         };
-
-    //         console.log("Sending email with params:", templateParams);
-
-    //         emailjs.send('service_8k4q3er', 'template_o207o8p', templateParams)
-    //             .then(function(response) {
-    //                 console.log('Email sent successfully:', response);
-    //                 alert('Your message has been sent successfully!');
-    //             }, function(error) {
-    //                 console.error('Failed to send email:', error);
-    //                 alert('There was an error sending your message.');
-    //             });
-    //     });
-    // });
-
-
 
     $(document).ready(function() {
+
+        var input = document.querySelector("#phoneId");
+        var iti = window.intlTelInput(input, {
+            initialCountry: "auto",
+            geoIpLookup: function(callback) {
+                $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+                    var countryCode = (resp && resp.country) ? resp.country : "us";
+                    callback(countryCode);
+                });
+            },
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+        });
+
+
         $('#careerForm').submit(function(event) {
             event.preventDefault(); // Prevent the default form submission
-    
+
+            // Validate the phone number
+            if (!iti.isValidNumber()) {
+                alert('Please enter a valid phone number.');
+                return;
+            }
+
             var formData = {
                 name: $('#name').val(),
                 email: $('#emailId').val(),
-                phone: $('#phoneId').val(),
+                // phone: $('#phoneId').val(),
+                phone: iti.getNumber(),
                 countryPreference: $('#countryName option:selected').text(),
                 experienceYear: $('#experienceItem option:selected').text(),
                 jobTime: $('#jobType option:selected').text(),
@@ -236,16 +227,9 @@ $(document).ready(function() {
             }
         });
     });
+
+
     
-
-
-
-
-//send details from CONTACT FORM to email ends 
-
-
-    //redirecting to HOME page starts
-
     const ids = ["main-logo", "homePage"];
 
         ids.forEach(function(id) {
@@ -256,9 +240,6 @@ $(document).ready(function() {
     
 
     //redirecting to HOME page ends
-
-
-
 
     
     var sideMenu = document.getElementById('side-menu');
@@ -278,5 +259,15 @@ $(document).ready(function() {
     // Add event listener to each <li> element
     document.querySelectorAll('#side-menu li').forEach(item => {
         item.addEventListener('click', closeMenu);
+    });
+
+
+    //
+    const selectElement = document.getElementById('countryName');
+
+    selectElement.addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        const flagUrl = selectedOption.getAttribute('data-flag');
+        this.style.backgroundImage = `url(${flagUrl})`;
     });
 
