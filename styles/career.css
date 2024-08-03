@@ -1245,12 +1245,7 @@ textarea:focus {
     
 @media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
 
-    
-    .choose-us-div{
-        
-        margin-top: 40%;
-    }
-    
+
     .main-container{
         margin-top: 20%;
 
