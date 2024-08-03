@@ -1119,11 +1119,12 @@ textarea:focus {
 @media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
 
     
-    .erp-div{
+    .main-container{
         
-        margin-top: 20%;
+        margin-top: 5%;
     }
-        
+      
+    
             
 }
 
