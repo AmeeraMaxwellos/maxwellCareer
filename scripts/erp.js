@@ -224,3 +224,13 @@ $(document).ready(function() {
     });
 
     
+
+
+     document.getElementById("erpNext").addEventListener("click", function() {
+          window.location.href = "erp.html";
+        });
+
+         
+    document.getElementById("careerPage").addEventListener("click", function() {
+        window.location.href = "career.html";
+      });

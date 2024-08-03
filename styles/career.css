@@ -793,8 +793,15 @@ textarea:focus {
     margin: 10px;
     font-size: 16px;
     line-height: 1.6;
+    cursor: pointer;
 }
 
+
+.more-details ul li a {
+    text-decoration: none;
+    color: black;
+
+}
 .footer-icons {
     margin: 30px 0 0 0;
     display: flex;
