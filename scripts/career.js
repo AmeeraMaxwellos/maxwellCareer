@@ -38,53 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // productLink.forEach(link => {
-    //     link.addEventListener('click', function(event) {
-    //         event.preventDefault();
-    //         const targetId = this.getAttribute('href').substring(1);
-    //         smoothScroll(targetId);
-    //     });
-    // });
-
-
 });
 
 
 // top-nav and main-nav scroll End
-
-
-
-//telephone country-code starts
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     var input2 = document.querySelector("#phoneId");
-//     window.intlTelInput(input2, {
-//         initialCountry: "auto",
-//         geoIpLookup: function(callback) {
-//             fetch('https://ipinfo.io/json', { headers: { 'Accept': 'application/json' } })
-//                 .then(response => response.json())
-//                 .then(data => callback(data.country))
-//                 .catch(() => callback('us'));
-//         },
-//         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
-//     });         
-           
-// });
-
-    // var input = document.querySelector("#phoneId");
-    // var iti = window.intlTelInput(input, {
-    // // any options you want to set
-    // initialCountry: "auto",
-    // geoIpLookup: function(callback) {
-    //     $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-    //     var countryCode = (resp && resp.country) ? resp.country : "us";
-    //     callback(countryCode);
-    //     });
-    // },
-    // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
-    // });
-
-//telephone country-code ends
 
 
 // stay connected for newslettter starts 
@@ -143,6 +100,9 @@ $(document).ready(function() {
 
     $(document).ready(function() {
 
+    //telephone country-code starts
+
+
         var input = document.querySelector("#phoneId");
         var iti = window.intlTelInput(input, {
             initialCountry: "auto",
@@ -155,6 +115,7 @@ $(document).ready(function() {
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
         });
 
+    //telephone country-code ends
 
         $('#careerForm').submit(function(event) {
             event.preventDefault(); // Prevent the default form submission
@@ -262,7 +223,7 @@ $(document).ready(function() {
     });
 
 
-    //
+    //country-flag in preferred country selection starts
     const selectElement = document.getElementById('countryName');
 
     selectElement.addEventListener('change', function() {
@@ -271,3 +232,4 @@ $(document).ready(function() {
         this.style.backgroundImage = `url(${flagUrl})`;
     });
 
+    //country-flag in preferred country selection ends

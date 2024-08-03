@@ -1480,5 +1480,5 @@ textarea:focus {
     width: 200px;
     background-repeat: no-repeat;
     background-position: 10px center;
-    padding-left: 40px; /* Make room for the flag */
+    padding-left: 40px; 
 }

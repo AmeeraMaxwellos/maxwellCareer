@@ -669,7 +669,7 @@
         });
     </script>
 
-    <script>
+    <!-- <script>
  
     $(document).ready(function() {
             $('#contactForm').submit(function(event) {
@@ -678,7 +678,8 @@
                 var formData = {
                     name: $('#name').val(),
                     email: $('#emailId').val(),
-                    phone: $('#phoneId').val(),
+                    // phone: $('#phoneId').val(),
+                    phone: iti.getNumber(),
                     companyName: $('#companyName').val(),
                     requirementType: $('#requirementItem option:selected').text(),
                     subject: $('input[name="subject"]').val(),
@@ -709,7 +710,8 @@
                     });
             });
         });
-    </script>
+   
+   </script> -->
 
 
 
